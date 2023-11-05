@@ -1,0 +1,4 @@
+com\ingress\bookstore\model\Book.class
+com\ingress\bookstore\BookstoreApplication.class
+com\ingress\bookstore\model\Student.class
+com\ingress\bookstore\model\Author.class
