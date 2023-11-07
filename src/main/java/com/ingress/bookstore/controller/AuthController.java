@@ -45,7 +45,7 @@ public class AuthController
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserLoginRequest loginRequest)
     {
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword());
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
         Authentication auth = authenticationManager.authenticate(authToken);
         SecurityContextHolder.getContext().setAuthentication(auth);
         String jwtToken = jwtTokenProvider.generateJwtToken(auth);
@@ -53,10 +53,10 @@ public class AuthController
     }
 
 
-    @PostMapping("/registerStudent")
-    public ResponseEntity<String> registerStudent(@RequestBody UserRegisterRequest registerRequest)
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody UserRegisterRequest registerRequest)
     {
-        if(userService.getOneUserByUserName(registerRequest.getUsername()) != null)
+        if (userService.getOneUserByUserName(registerRequest.getUsername()) != null)
         {
             return new ResponseEntity<>("Username already exist.", HttpStatus.BAD_REQUEST);
         }
@@ -67,35 +67,25 @@ public class AuthController
         user.setRole(registerRequest.getRole());
         userService.saveOneUser(user);
 
-        Student student = new Student();
-        student.setBirthDate(registerRequest.getBirthdate());
-        student.setName(registerRequest.getName());
-        student.setUser(user);
-        studentService.saveStudent(student);
-
-        return new ResponseEntity<>("Registered successfully",HttpStatus.OK);
-    }
-
-    @PostMapping("/registerAuthor")
-    public ResponseEntity<String> registerAuthor(@RequestBody UserRegisterRequest registerRequest)
-    {
-        if(userService.getOneUserByUserName(registerRequest.getUsername()) != null)
+        if ("STUDENT".equals(registerRequest.getRole()))
         {
-            return new ResponseEntity<>("Username already exist.", HttpStatus.BAD_REQUEST);
+            Student student = new Student();
+            student.setBirthDate(registerRequest.getBirthdate());
+            student.setName(registerRequest.getName());
+            student.setUser(user);
+            studentService.saveStudent(student);
         }
-        User user = new User();
-        user.setUsername(registerRequest.getUsername());
-        user.setEmail(registerRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-        user.setRole(registerRequest.getRole());
-        userService.saveOneUser(user);
+        if ("AUTHOR".equals(registerRequest.getRole()))
+        {
+            Author author = new Author();
+            author.setBirthdate(registerRequest.getBirthdate());
+            author.setName(registerRequest.getName());
+            author.setUser(user);
+            authorService.saveAuthor(author);
+        }
 
-        Author author = new Author();
-        author.setBirthdate(registerRequest.getBirthdate());
-        author.setName(registerRequest.getName());
-        author.setUser(user);
-        authorService.saveAuthor(author);
 
-        return new ResponseEntity<>("Registered successfully",HttpStatus.OK);
+        return new ResponseEntity<>("Registered successfully", HttpStatus.OK);
     }
+
 }

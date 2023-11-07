@@ -28,7 +28,7 @@ public class AuthorController
         this.authorService = authorService;
     }
 
-    @PostMapping("/addBook/{authorId}")
+    @PostMapping("/{authorId}/addBook")
     public ResponseEntity<String> addBook(@PathVariable Long authorId,@RequestBody BookDTO bookRequest)
     {
         Optional<Author> authorOptional = authorService.getAuthorById(authorId);

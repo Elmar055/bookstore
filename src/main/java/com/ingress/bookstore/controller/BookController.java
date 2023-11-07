@@ -20,7 +20,7 @@ public class BookController
     }
 
     // get specific book readers
-    @GetMapping("/readers/{bookId}")
+    @GetMapping("/{bookId}/readers")
     public ResponseEntity<List<StudentDTO>> getReadersForBook(@PathVariable Long bookId)
     {
         List<Student> readers = bookService.getReadersForBook(bookId);
@@ -40,7 +40,6 @@ public class BookController
 
         return ResponseEntity.ok(readerDTOs);
     }
-    // books which student read add to student_books
 
 
 }

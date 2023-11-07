@@ -11,7 +11,7 @@
 	<groupId>com.ingress</groupId>
 	<artifactId>bookstore</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>bookstore</name>
 	<description>Bookstore application</description>
 	<properties>

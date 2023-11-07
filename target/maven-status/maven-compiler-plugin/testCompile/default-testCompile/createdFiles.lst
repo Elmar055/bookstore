@@ -1,0 +1,9 @@
+com\ingress\bookstore\service\StudentServiceTest.class
+com\ingress\bookstore\service\AuthorServiceTest.class
+com\ingress\bookstore\service\UserServiceTest.class
+com\ingress\bookstore\controller\AuthControllerTest.class
+com\ingress\bookstore\service\BookServiceTest.class
+com\ingress\bookstore\BookstoreApplicationTests.class
+com\ingress\bookstore\controller\AuthorControllerTest.class
+com\ingress\bookstore\controller\StudentControllerTest.class
+com\ingress\bookstore\controller\BookControllerTest.class

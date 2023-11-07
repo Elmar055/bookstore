@@ -85,7 +85,7 @@ public class AuthControllerTest {
         savedUser.setId(1L);
         when(userService.saveOneUser(any(User.class))).thenReturn(savedUser);
 
-        ResponseEntity<String> response = authController.registerStudent(registerRequest);
+        ResponseEntity<String> response = authController.register(registerRequest);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Registered successfully", response.getBody());
@@ -107,7 +107,7 @@ public class AuthControllerTest {
         savedUser.setId(1L);
         when(userService.saveOneUser(any(User.class))).thenReturn(savedUser);
 
-        ResponseEntity<String> response = authController.registerAuthor(registerRequest);
+        ResponseEntity<String> response = authController.register(registerRequest);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Registered successfully", response.getBody());

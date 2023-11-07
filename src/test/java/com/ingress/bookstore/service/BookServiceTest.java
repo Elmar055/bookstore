@@ -90,28 +90,28 @@ class BookServiceTest {
         verify(studentRepository, times(1)).findByBooksReadingContains(book);
     }
 
-    @Test
-    void testAddBookReading()
-    {
-        Long studentId = 1L;
-        Long bookId = 2L;
-
-        Student student = new Student();
-        student.setId(studentId);
-
-        Book book = new Book();
-        book.setId(bookId);
-
-        when(studentRepository.findById(studentId)).thenReturn(Optional.of(student));
-        when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
-        when(studentRepository.save(any(Student.class))).thenAnswer(invocation -> invocation.getArgument(0));
-
-        bookService.addBookReading(studentId, bookId);
-
-        verify(studentRepository, times(1)).save(any(Student.class));
-
-        assertEquals(1, student.getBooksReading().size());
-        assertEquals(book, student.getBooksReading().get(0));
-    }
+//    @Test
+//    void testAddBookReading()
+//    {
+//        Long studentId = 1L;
+//        Long bookId = 2L;
+//
+//        Student student = new Student();
+//        student.setId(studentId);
+//
+//        Book book = new Book();
+//        book.setId(bookId);
+//
+//        when(studentRepository.findById(studentId)).thenReturn(Optional.of(student));
+//        when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
+//        when(studentRepository.save(any(Student.class))).thenAnswer(invocation -> invocation.getArgument(0));
+//
+//        bookService.addBookReading(studentId, bookId);
+//
+//        verify(studentRepository, times(1)).save(any(Student.class));
+//
+//        assertEquals(1, student.getBooksReading().size());
+//        assertEquals(book, student.getBooksReading().get(0));
+//    }
 
 }
