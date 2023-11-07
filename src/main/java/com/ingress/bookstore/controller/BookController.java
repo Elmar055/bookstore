@@ -41,10 +41,6 @@ public class BookController
         return ResponseEntity.ok(readerDTOs);
     }
     // books which student read add to student_books
-    @PostMapping("/student/{studentId}/{bookId}")
-    public void addBookReading(@PathVariable Long studentId, @PathVariable Long bookId)
-    {
-        bookService.addBookReading(studentId, bookId);
-    }
+
 
 }

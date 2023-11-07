@@ -13,6 +13,10 @@ public class UserRegisterRequest
 
     String role;
 
+    public UserRegisterRequest()
+    {
+    }
+
     public String getRole() {
         return role;
     }

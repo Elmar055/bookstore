@@ -2,7 +2,6 @@ package com.ingress.bookstore.service;
 
 import com.ingress.bookstore.model.Author;
 import com.ingress.bookstore.model.Book;
-import com.ingress.bookstore.model.Student;
 import com.ingress.bookstore.repository.AuthorRepository;
 import com.ingress.bookstore.repository.BookRepository;
 import com.ingress.bookstore.repository.StudentRepository;

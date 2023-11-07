@@ -1,11 +1,11 @@
 package com.ingress.bookstore.controller;
 
 import com.ingress.bookstore.dto.BookDTO;
-import com.ingress.bookstore.dto.StudentDTO;
 import com.ingress.bookstore.model.Author;
 import com.ingress.bookstore.model.Book;
 import com.ingress.bookstore.model.Student;
 import com.ingress.bookstore.service.AuthorService;
+import com.ingress.bookstore.service.BookService;
 import com.ingress.bookstore.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +21,12 @@ public class StudentController
     private final StudentService studentService;
     private final AuthorService authorService;
 
-    public StudentController(StudentService studentService, AuthorService authorService) {
+    private final BookService bookService;
+
+    public StudentController(StudentService studentService, AuthorService authorService, BookService bookService) {
         this.studentService = studentService;
         this.authorService = authorService;
+        this.bookService = bookService;
     }
 
     @GetMapping("/{studentId}/books")
@@ -71,5 +74,12 @@ public class StudentController
         bookDTO.setName(book.getName());
         bookDTO.setAuthorId(book.getAuthor().getId());
         return bookDTO;
+    }
+
+    @PostMapping("/{studentId}/book/{bookId}")
+    public ResponseEntity<String> addBookReading(@PathVariable Long studentId, @PathVariable Long bookId)
+    {
+        bookService.addBookReading(studentId, bookId);
+        return ResponseEntity.ok("Added to readed books");
     }
 }
