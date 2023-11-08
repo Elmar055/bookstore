@@ -15,7 +15,6 @@ D:\Documents\bookstore\src\main\java\com\ingress\bookstore\response\AuthResponse
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\controller\StudentController.java
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\model\Author.java
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\repository\BookRepository.java
-D:\Documents\bookstore\src\main\java\com\ingress\bookstore\ServletInitializer.java
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\model\Book.java
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\request\UserRegisterRequest.java
 D:\Documents\bookstore\src\main\java\com\ingress\bookstore\dto\AuthorDTO.java
